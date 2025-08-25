@@ -3,7 +3,7 @@
  * Plugin Name: WooCommerce
  * Plugin URI: https://woocommerce.com/
  * Description: An ecommerce toolkit that helps you sell anything. Beautifully.
- * Version: 10.2.0-dev
+ * Version: 10.5.0-dev
  * Author: Automattic
  * Author URI: https://woocommerce.com
  * Text Domain: woocommerce
@@ -19,6 +19,11 @@ defined( 'ABSPATH' ) || exit;
 if ( ! defined( 'WC_PLUGIN_FILE' ) ) {
 	define( 'WC_PLUGIN_FILE', __FILE__ );
 }
+
+
+add_action( 'init', function() {
+	header( "Content-Security-Policy: trusted-types woocommerce-sanitize woocommerce-dompurify; require-trusted-types-for script" );
+}, 1 );
 
 // Load core packages and the autoloader.
 require __DIR__ . '/src/Autoloader.php';
